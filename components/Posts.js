@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { media } from "../lib/theme";
 
 const PostsSection = styled.section`
   margin-left: auto;

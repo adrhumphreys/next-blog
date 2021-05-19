@@ -1,6 +1,5 @@
-import Link from "next/link";
 import styled from "styled-components";
-import { media, typography } from "../lib/theme";
+import { media } from "../lib/theme";
 import { IntroWrapper, Title } from "./Intro";
 import React from "react";
 
