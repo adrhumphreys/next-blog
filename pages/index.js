@@ -7,7 +7,7 @@ import { getAllPosts } from "../lib/getAllPosts";
 export default function Home({ posts }) {
   return (
     <Layout>
-      <HomeIntro title="Test deploy previews." subtitle="Developer of sorts" />
+      <HomeIntro title="Totes fixed thatonepreviews." subtitle="Developer of sorts" />
       <Posts posts={posts} />
     </Layout>
   );
