@@ -12,33 +12,36 @@ const Subtitle = styled.p`
 
 const Picture = styled.picture`
   pointer-events: none;
-  top: 240px;
+  top: 190px;
   left: 0;
   position: absolute;
 
-  ${media.md} {
-    top: 180px;
-    bottom: -73px;
+  ${media.lg} {
+    top: 110px;
+    left: -10px;
   }
 
-  ${media.lg} {
-    top: 60px;
-    bottom: -73px;
+  ${media.xl} {
+    top: 0;
+    left: 0;
   }
 `;
 
-const HomeIntro = ({ title, subtitle }) => {
+const ProjectsIntro = () => {
   return (
     <IntroWrapper>
-      <Title>{title}</Title>
-      <Subtitle>{subtitle}</Subtitle>
+      <Title>Projects.</Title>
+      <Subtitle>Personal projects I've been working on</Subtitle>
       <Picture>
-        <source media="(min-width: 1280px)" srcSet="/jetplane-desktop.svg" />
-        <source media="(min-width: 1024px)" srcSet="/jetplane-tablet.svg" />
-        <img src="/jetplane-mobile.svg" />
+        <source
+          media="(min-width: 1280px)"
+          srcSet="/jetplane-desktop-red.svg"
+        />
+        <source media="(min-width: 1024px)" srcSet="/jetplane-tablet-red.svg" />
+        <img src="/jetplane-mobile-red.svg" />
       </Picture>
     </IntroWrapper>
   );
 };
 
-export default HomeIntro;
+export default ProjectsIntro;

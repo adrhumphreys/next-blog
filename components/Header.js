@@ -2,13 +2,12 @@ import styled from "styled-components";
 import Link from "next/link";
 import { media } from "../lib/theme";
 import React from "react";
+import { useRouter } from "next/router";
 
 const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
   padding: 20px 16px;
-  position: relative;
-  z-index: 1;
 
   ${media.lg} {
     margin-left: 40px;
@@ -19,10 +18,6 @@ const HeaderWrapper = styled.header`
 const LinkContainer = styled.p`
   margin-top: 0;
   margin-bottom: 0;
-
-  &:first-of-type a {
-    text-decoration-color: ${({ theme }) => theme.colors.forestGreen};
-  }
 
   &:last-of-type a {
     margin-left: 30px;
@@ -39,20 +34,33 @@ const StyledLink = styled.a`
   }
 `;
 
+const ActiveLink = styled(StyledLink)`
+  text-decoration-color: ${({ theme }) => theme.colors.forestGreen};
+`;
+
 const Header = () => {
+  const { asPath } = useRouter();
+
+  const ProjectsLink = asPath === "/projects" ? ActiveLink : StyledLink;
+  const ContactLink = asPath === "/contact" ? ActiveLink : StyledLink;
+
+  const PostsLink = ["/projects", "/contact"].some((link) => link === asPath)
+    ? StyledLink
+    : ActiveLink;
+
   return (
     <HeaderWrapper>
       <LinkContainer>
         <Link href="/">
-          <StyledLink href="/">Posts</StyledLink>
+          <PostsLink href="/">Posts</PostsLink>
         </Link>
       </LinkContainer>
       <LinkContainer>
         <Link href="/projects">
-          <StyledLink href="/">Projects</StyledLink>
+          <ProjectsLink href="/projects">Projects</ProjectsLink>
         </Link>
         <Link href="/contact">
-          <StyledLink href="/">Contact</StyledLink>
+          <ContactLink href="/contact">Contact</ContactLink>
         </Link>
       </LinkContainer>
     </HeaderWrapper>

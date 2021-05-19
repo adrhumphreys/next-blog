@@ -9,6 +9,7 @@ const theme = {
     forestGreen: "#2E8364",
     primary: "#0070f3",
     peachyLight: "#FDF6F5",
+    mediumGrey: "#767676",
   },
 };
 
