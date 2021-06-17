@@ -52,7 +52,7 @@ const Header = () => {
     <HeaderWrapper>
       <LinkContainer>
         <Link href="/">
-          <PostsLink href="/">Posts</PostsLink>
+          <PostsLink href="/">Posts abc</PostsLink>
         </Link>
       </LinkContainer>
       <LinkContainer>
