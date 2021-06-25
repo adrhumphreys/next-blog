@@ -9,10 +9,12 @@ Previously I wrote about getting the coupons from Wheelio through code over [her
 
 ### Looking at the code
 There's a call in our network requests to the following url:
-`https://dashboard.wheelio-app.com/api/wheelioapp/getsettings?jsonp=WheelioAppJSONPCallback410&shopId=shopename.myshopify.com&domain=x&currentUrl=hx%2F&uid=410`
+```php
+https://dashboard.wheelio-app.com/api/wheelioapp/getsettings?jsonp=WheelioAppJSONPCallback410&shopId=shopename.myshopify.com&domain=x&currentUrl=hx%2F&uid=410
+```
 
 It returns some unreadable contents that looks like:
-```
+```php
 window['WheelioAppJSONPCallback410']('U2Fsd...')
 ```
 So we know that we're calling the function `WheelioAppJSONPCallback410` and passing the string into it. If we then look up the function, we get the following: `(_0x27a9e3){_0x1fb94f(_0x27a9e3);}`
@@ -35,7 +37,7 @@ const decoded = JSON.parse(originalText)
 If we grab the value of `encrypted` as a string by calling `encrypted.toString()` we get `U2FsdGVkX19/UH7E7enooF2LUmLfPAxrYe42fwXef20=`. Hey it's the same starting characters as the Wheelio response, we're onto something. So know all we need is the key they used to decrypt responses.
 
 We know the function is going to be called `decrypt` so we can search for that and we get a line that looks like the following:
-```
+```php
 let _0x4de99e = CryptoJS[_0x5dad('0x25')]['decrypt'](_0x5a4f56, _0x1b09d6)[_0x5dad('0x7f')](CryptoJS[_0x5dad('0x4')][_0x5dad('0x36')]);
 ```
 
